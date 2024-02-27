@@ -1,15 +1,16 @@
-import { insertOrder, updateOrderSession } from "@/models/order";
 import { respData, respErr } from "@/lib/resp";
+import { insertOrder, updateOrderSession } from "@/models/order";
 
-import { Order } from "@/types/order";
-import Stripe from "stripe";
-import { currentUser } from "@clerk/nextjs";
 import { genOrderNo } from "@/lib/order";
+import { Order } from "@/types/order";
+import { currentUser } from "@clerk/nextjs";
+import Stripe from "stripe";
 
 export const maxDuration = 120;
 
 export async function POST(req: Request) {
   const user = await currentUser();
+  console.log("-->",user)
   if (!user || !user.emailAddresses || user.emailAddresses.length === 0) {
     return respErr("not login");
   }

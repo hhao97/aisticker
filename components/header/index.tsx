@@ -1,13 +1,12 @@
-import { AppContext } from "@/contexts/AppContext";
 import { Button } from "@/components/ui/button";
+import User from "@/components/user";
+import { AppContext } from "@/contexts/AppContext";
 import { Tab } from "@/types/tab";
 import { useContext } from "react";
-import User from "@/components/user";
 import Social from "../social";
 
 export default function () {
   const { user } = useContext(AppContext);
-
   const navigations: Tab[] = [
     { name: "pricing", title: "Pricing", url: "/pricing" },
   ];
